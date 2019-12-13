@@ -4,5 +4,5 @@
 
    - name: Creates directory
      file:
-       path: ~/demo_directory_created_through_awx
+       path: /tmp/awx-demo
        state: directory
