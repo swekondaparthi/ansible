@@ -1,0 +1,31 @@
+- To print installed version of 
+
+* ansible --version
+
+- Have a doubt on your inventroy ??
+ Lists all of the hosts configured in your control server 'hosts' file for the system.
+
+* ansible all --list-hosts
+
+*find*
+*********
+#ansible-playbook fromcmdline.yml --extra-vars "hosts=apacheweb user=test pkg=telnet"
+- hosts: '{{ hosts }}'
+  user: '{{ user }}'
+  sudo: yes
+  connection: ssh
+  gather_facts: no
+  tasks:
+  - name: Install some software
+    yum: pkg={{ pkg }} state=latest
+*********
+* Stairs Vs. Elevators-- one step at a time :) 
+# ansible-playbook startat.yml --step
+tasks:
+  - name: Install Telnet
+    yum: pkg=telnet state=latest
+  - name: Install Lynx
+    yum: pkg=lynx state=latest
+  - name: Install at
+    yum: pkg=at state=latest
+*********
